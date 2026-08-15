@@ -1,0 +1,98 @@
+<Window x:Class="RevitMCPApplication.WaterSizeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="WCT-PlumbFlow — Water Supply"
+        Width="560" Height="480"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+        <Style x:Key="HeaderText" TargetType="TextBlock">
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="FontSize" Value="11"/>
+            <Setter Property="Foreground" Value="#1565C0"/>
+        </Style>
+        <Style x:Key="SummaryLabel" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="11"/>
+            <Setter Property="Foreground" Value="#333"/>
+            <Setter Property="Margin" Value="0,2,0,2"/>
+        </Style>
+        <Style x:Key="SummaryValue" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="11"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Margin" Value="0,2,0,2"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="12"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="12"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="12"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Button -->
+        <Button Grid.Row="0" x:Name="SelectPipeButton"
+                Content="Select network pipe for water supply analysis"
+                HorizontalAlignment="Stretch" Padding="8,6"
+                Click="SelectPipeButton_Click"/>
+
+        <!-- Results table -->
+        <DataGrid Grid.Row="2" x:Name="ResultsGrid"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  HeadersVisibility="Column"
+                  GridLinesVisibility="Horizontal"
+                  RowBackground="White"
+                  AlternatingRowBackground="#F5F9FF"
+                  BorderBrush="#DDD" BorderThickness="1"
+                  FontSize="11">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Mark"      Binding="{Binding Mark}"            Width="80"/>
+                <DataGridTextColumn Header="ΣLU"       Binding="{Binding FuDisplay}"        Width="60"/>
+                <DataGridTextColumn Header="Q tenancy" Binding="{Binding QPsfrDisplay}"     Width="90"/>
+                <DataGridTextColumn Header="n equiv"   Binding="{Binding NEquivDisplay}"    Width="80"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Summary -->
+        <Border Grid.Row="4" Background="#E3F2FD" CornerRadius="4" Padding="12,8">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0">
+                    <TextBlock Style="{StaticResource HeaderText}" Text="Sub-meters found"/>
+                    <TextBlock x:Name="MeterCountText" Style="{StaticResource SummaryValue}" Text="—"/>
+                </StackPanel>
+                <StackPanel Grid.Column="1">
+                    <TextBlock Style="{StaticResource HeaderText}" Text="Equiv. dwellings (N)"/>
+                    <TextBlock x:Name="NEquivText" Style="{StaticResource SummaryValue}" Text="—"/>
+                </StackPanel>
+                <StackPanel Grid.Column="2">
+                    <TextBlock Style="{StaticResource HeaderText}" Text="Building main Q"/>
+                    <TextBlock x:Name="QMainText" Style="{StaticResource SummaryValue}" Text="—" FontSize="13"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Status / Close -->
+        <Grid Grid.Row="6">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock x:Name="StatusText" Grid.Column="0"
+                       VerticalAlignment="Center" FontSize="10"
+                       Foreground="#666" Text="Select a pipe to begin."/>
+            <Button Grid.Column="1" Content="Close" Width="80" Padding="8,4"
+                    Click="CloseButton_Click"/>
+        </Grid>
+    </Grid>
+</Window>

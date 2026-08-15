@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>WCT-PlumbFlow</Name>
+    <Assembly>RevitMCPApplication.dll</Assembly>
+    <FullClassName>RevitMCPApplication.App</FullClassName>
+    <ClientId>f3c9f050-4d43-44c1-a282-664c22e3eb73</ClientId>
+    <VendorId>WCT</VendorId>
+    <VendorDescription>WaterCAD — watercad.com.au</VendorDescription>
+  </AddIn>
+</RevitAddIns>

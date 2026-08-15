@@ -1,0 +1,20 @@
+<Window x:Class="RevitMCPApplication.StormwaterSizeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="WCT-PlumbFlow"
+        Width="320" Height="140"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
+
+    <StackPanel Margin="16,14,16,14">
+        <Button x:Name="SelectPipeBtn"
+                Content="Select network pipe for flow analysis"
+                Height="36" Margin="0,0,0,8"
+                Background="#1565C0" Foreground="White" FontWeight="SemiBold"
+                Click="SelectPipe_Click"/>
+        <Button x:Name="ClearMarkersBtn"
+                Content="Clear Markers"
+                Height="32" IsEnabled="False"
+                Click="ClearMarkers_Click"/>
+    </StackPanel>
+</Window>

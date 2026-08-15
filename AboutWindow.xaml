@@ -1,0 +1,38 @@
+<Window x:Class="RevitMCPApplication.AboutWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="About WCT Plumbing Tools"
+        Width="540" Height="400"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
+
+    <DockPanel Margin="24,20,24,20">
+
+        <StackPanel DockPanel.Dock="Bottom" HorizontalAlignment="Right" Orientation="Horizontal" Margin="0,16,0,0">
+            <Button Content="OK" Width="80" Click="OkBtn_Click" IsDefault="True"/>
+        </StackPanel>
+
+        <StackPanel>
+            <TextBlock Text="WCT Plumbing Tools"
+                       FontSize="15" FontWeight="Bold" Margin="0,0,0,2"/>
+            <TextBlock Text="WCT-PlumbCheck  ·  WCT-PlumbFlow"
+                       FontSize="11" Foreground="Gray" Margin="0,0,0,16"/>
+
+            <Separator Margin="0,0,0,16"/>
+
+            <ScrollViewer VerticalScrollBarVisibility="Auto" MaxHeight="260">
+                <StackPanel>
+                    <TextBlock TextWrapping="Wrap" FontStyle="Italic" FontSize="11" Margin="0,0,0,12"
+                               Text="WCT-PlumbCheck and WCT-PlumbFlow are reference implementations demonstrating how hydraulic engineering workflows can be embedded within a Revit BIM environment using AS3500 as the governing standard."/>
+
+                    <TextBlock TextWrapping="Wrap" FontStyle="Italic" FontSize="11" Margin="0,0,0,12"
+                               Text="These tools are provided for educational and demonstrative purposes only, therefore do not constitute a design deliverable and must not be relied upon as a substitute for the independent judgement of a suitably qualified hydraulic engineer."/>
+
+                    <TextBlock TextWrapping="Wrap" FontStyle="Italic" FontSize="11" Margin="0,0,0,0"
+                               Text="The software is provided without warranty of any kind, express or implied, including but not limited to warranties of merchantability, fitness for a particular purpose, or fitness for use on any specific project. Use of this software does not confer any right to apply its outputs as a formal engineering assessment."/>
+                </StackPanel>
+            </ScrollViewer>
+        </StackPanel>
+
+    </DockPanel>
+</Window>

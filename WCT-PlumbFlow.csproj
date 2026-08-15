@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <PlatformTarget>x64</PlatformTarget>
+        <OutputType>Library</OutputType>
+        <RootNamespace>RevitMCPApplication</RootNamespace>
+        <AssemblyName>RevitMCPApplication</AssemblyName>
+        <LangVersion>latest</LangVersion>
+        <Configurations>R2025</Configurations>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'R2025|AnyCPU' ">
+        <OutputPath>bin\R2025\</OutputPath>
+        <DefineConstants>R2025</DefineConstants>
+        <TargetFramework>net8.0-windows</TargetFramework>
+        <RevitVersion>2025</RevitVersion>
+        <EnableDefaultEmbeddedResourseItems>false</EnableDefaultEmbeddedResourseItems>
+        <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+        <UseWPF>true</UseWPF>
+    </PropertyGroup>
+
+    <ItemGroup Condition=" '$(Configuration)'=='R2025' ">
+        <FrameworkReference Include="Microsoft.WindowsDesktop.App" />
+        <PackageReference Include="Revit_All_Main_Versions_API_x64" Version="2025.0.0" IncludeAssets="build; compile" PrivateAssets="All" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Include="App.cs" />
+        <Compile Include="Discipline.cs" />
+        <Compile Include="ManningsFormula.cs" />
+        <Compile Include="PipeNetworkTraverser.cs" />
+        <Compile Include="StormwaterSizeCommand.cs" />
+        <Compile Include="StormwaterSizeWindow.xaml.cs" />
+        <Compile Include="WaterSupplyTraverser.cs" />
+        <Compile Include="WaterSizeCommand.cs" />
+        <Compile Include="WaterSizeWindow.xaml.cs" />
+        <Compile Include="AboutCommand.cs" />
+        <Compile Include="AboutWindow.xaml.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Page Include="StormwaterSizeWindow.xaml" />
+        <Page Include="WaterSizeWindow.xaml" />
+        <Page Include="AboutWindow.xaml" />
+        <EmbeddedResource Include="Images\Storm.png" />
+        <EmbeddedResource Include="Images\Cold_Water.png" />
+        <Content Include="RevitMCPApplication.addin">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+    </ItemGroup>
+
+    <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+        <Exec Command="if exist &quot;$(AppData)\Autodesk\REVIT\Addins\$(RevitVersion)&quot; xcopy /Y /i &quot;$(TargetDir)$(TargetName).dll&quot; &quot;$(AppData)\Autodesk\REVIT\Addins\$(RevitVersion)\$(ProjectName)\&quot;" />
+        <Exec Command="if exist &quot;$(AppData)\Autodesk\REVIT\Addins\$(RevitVersion)&quot; xcopy /Y /i &quot;$(TargetDir)$(TargetName).addin&quot; &quot;$(AppData)\Autodesk\REVIT\Addins\$(RevitVersion)&quot;" />
+    </Target>
+
+</Project>
