@@ -65,7 +65,7 @@ The software is provided without warranty of any kind. Use of this software does
 
 ## For AI Assistants
 
-See `CLAUDE.md` for full project context including build instructions, architecture notes, and design decisions. Works with Claude Code (auto-loaded) and any other AI assistant when pointed at the file manually.
+See `AIassist.md` for full project context including build instructions, architecture notes, and design decisions. Point any AI assistant at that file for immediate project context.
 
 ---
 
